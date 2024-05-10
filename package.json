@@ -1,0 +1,26 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "Simple api, with js and geminiapi",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UtopiaGroupPb/first-project.git"
+  },
+  "author": "UtopiaGroup",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UtopiaGroupPb/first-project/issues"
+  },
+  "homepage": "https://github.com/UtopiaGroupPb/first-project#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "env": "^0.0.2",
+    "express": "^4.19.2",
+    "pg": "^8.11.5",
+    "sequelize": "^6.37.3"
+  }
+}
