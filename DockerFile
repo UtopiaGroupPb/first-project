@@ -1,10 +1,20 @@
-FROM node:v12.22.9
-
-WORKDIR /usr/src/app 
-
 COPY ./src/package*.json ./
 COPY ./src .
 
-RUN npm install 
+RUN bun install
 
-CMD ["node", "main.js"]
+RUN apk add --no-cache postgresql
+
+WORKDIR /var/lib/postgresql/data
+
+ENV PGDATA=/var/lib/postgresql/data
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+ENV POSTGRES_USER=${POSTGRES_USER}
+ENV POSTGRES_DB=${POSTGRES_DB}
+
+RUN initdb -d ${PGDATA}
+
+RUN echo "host all all ${POSTGRES_USER} ${POSTGRES_PASSWORD} md5" >> ${PGDATA}/pg_hba.conf
+RUN echo "CREATE DATABASE ${POSTGRES_DB} OWNER ${POSTGRES_USER}" | psql -U postgres
+
+CMD ["bun", "run", "dev"]

@@ -3,12 +3,18 @@ First Project Repo
 
 # Installation
 ```bash
-npm install
+bun install
 ```
 
 ## Run 
 ```bash
-node main.js
+bun run dev
+```
+
+## DataBase
+### Linux
+```bash
+sudo psql -U 'user' -d 'database' -a -f main.sql
 ```
 
 ## Run with Docker
